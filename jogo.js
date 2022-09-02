@@ -8,13 +8,13 @@ var criaMosquitoTempo = 1500
 var nivel = window.location.search
 nivel = nivel.replace('?', '')
 
-if(nivel === 'normal'){
+if (nivel === 'normal') {
     //1500
     criaMosquitoTempo = 1500
-}else if(nivel === 'dificil'){
+} else if (nivel === 'dificil') {
     //1000
     criaMosquitoTempo = 1000
-}else if(nivel === 'impossivel'){
+} else if (nivel === 'impossivel') {
     //750
     criaMosquitoTempo = 750
 }
@@ -23,20 +23,19 @@ function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight
     largura = window.innerWidth
 
-    console.log(largura, altura)
 }
 
 ajustaTamanhoPalcoJogo()
 
-var cronometro = setInterval(function(){
+var cronometro = setInterval(function () {
 
     tempo -= 1
 
-    if(tempo < 0){
+    if (tempo < 0) {
         clearInterval(cronometro)
         clearInterval(criaMosquito)
         window.location.href = 'vitoria.html'
-    }else{
+    } else {
         document.getElementById('cronometro').innerHTML = tempo
     }
 
@@ -45,19 +44,19 @@ var cronometro = setInterval(function(){
 function posicaoRandom() {
 
     //remover mosquito anterior (caso exista)
-    if(document.getElementById('mosquito')){
+    if (document.getElementById('mosquito')) {
         document.getElementById('mosquito').remove()
 
-        if(vidas > 3){
+        if (vidas > 3) {
 
             window.location.href = 'game_over.html'
-        }else{
+        } else {
 
-            document.getElementById('v' + vidas).src="img/coracao_vazio.png"
-        
+            document.getElementById('v' + vidas).src = "img/coracao_vazio.png"
+
             vidas++
         }
-       
+
     }
 
     var posicaoX = Math.floor(Math.random() * largura) - 90
@@ -65,8 +64,6 @@ function posicaoRandom() {
 
     posicaoX = posicaoX < 0 ? 0 : posicaoX
     posicaoX = posicaoY < 0 ? 0 : posicaoY
-
-    console.log(posicaoX, posicaoY)
 
     //criar o elemento html
 
@@ -77,32 +74,31 @@ function posicaoRandom() {
     mosquito.style.top = posicaoY + 'px'
     mosquito.style.position = 'absolute'
     mosquito.id = 'mosquito'
-    mosquito.onclick = function(){
+    mosquito.onclick = function () {
         this.remove()
     }
 
     document.body.appendChild(mosquito)
 
-    console.log(ladoAleatorio())
 }
 
-function tamanhoAleatorio(){
+function tamanhoAleatorio() {
     var classe = Math.floor(Math.random() * 3)
 
-    switch(classe){
+    switch (classe) {
         case 0:
             return 'mosquito1'
         case 1:
             return 'mosquito2'
         case 2:
-            return 'mosquito3'    
+            return 'mosquito3'
     }
 }
 
-function ladoAleatorio(){
+function ladoAleatorio() {
     var classe = Math.floor(Math.random() * 2)
 
-    switch(classe){
+    switch (classe) {
         case 0:
             return 'ladoA'
         case 1:
