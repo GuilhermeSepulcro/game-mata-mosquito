@@ -1,5 +1,6 @@
 html{
     cursor: url(img/mata_mosquito.png) 30 30, auto;
+    overflow-x:hidden;
 }
 
 body {
